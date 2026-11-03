@@ -132,7 +132,28 @@
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-        });
+     // AdMob Initialize aur Banner Ad load karne ke liye
+async function initAdMob() {
+  try {
+    await window.AdMob.initialize({
+      requestTrackingAuthorization: true,
+    });
+
+    await window.AdMob.showBanner({
+      adId: 'ca-app-pub-4388507441365820/8391069756',
+      position: 'BOTTOM_CENTER',
+      size: 'BANNER',
+      margin: 0,
+      isTesting: true
+    });
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  initAdMob();
+});
     </script>
 </body>
 </html>
